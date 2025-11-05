@@ -1,0 +1,21 @@
+{
+  "name": "modrinth_mod_downloader",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.  \r See the [LICENSE](./LICENSE) file for details.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/finn-nnif/Modrinth-Mod-Downloader.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/finn-nnif/Modrinth-Mod-Downloader/issues"
+  },
+  "homepage": "https://github.com/finn-nnif/Modrinth-Mod-Downloader#readme"
+}
