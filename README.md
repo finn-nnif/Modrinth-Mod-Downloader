@@ -35,13 +35,13 @@ export const sodium = {
 ```bash
 https://modrinth.com/mod/sodium <--- # only take the 'sodium' !!!
 ```
-**If you don't** it may not work when there are underscores and spaces involved as it differs !!!
+**If you don't**, it may not work when there are underscores and spaces involved as it differs !!!
 
 ---
 
 ### Running the Downloader
 
-1. Pick which list you are using and the filepath to your `.minecraft/mods folder.`
+1. Pick which list you are using and the filepath to your `.minecraft/mods` folder.
 2. Open a terminal and navigate to the project folder.
 3. Run the downloader script:
 
