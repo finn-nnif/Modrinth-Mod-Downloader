@@ -96,6 +96,12 @@ Format:
 
 ---
 
+### Added Features
+
+* If the mod already exists in the mod folder, the downloader will skip it. This helps to reduce download time by not making unnecessary download calls.
+
+---
+
 ### Yapping
 * This idea has been floating in my head for a while but I was loading up the new version of Minecraft wishing to start a new singleplayer and realising I needed to download my **~20ish** Quality of Life (QoL) Mods as I do *every* time. Anyways, after having to do that so many times I finally created this tool to help me. *(And I even left my QoL Mod List in there :3)*
 * This was genuinely really fun to make so I may add more features in future!!
