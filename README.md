@@ -45,8 +45,8 @@ https://modrinth.com/mod/sodium <--- # only take the 'sodium' !!!
 ```js
 // CONFIG //
 
-export const list = lists.sodium;
-export const output = 'C:\\APPS\\MultiMC\\instances\\1.21.10\\.minecraft\\mods';
+export const list = lists.sodium;   //  Pick the designated Mod List
+export const output = 'C:\\APPS\\MultiMC\\instances\\1.21.10\\.minecraft\\mods';    //  Include DOUBLE Backslashes
 ```
 2. Open a terminal and navigate to the project folder.
 3. Run the downloader script:
@@ -62,7 +62,7 @@ Downloaded sodium - 1.21.10 - fabric in 2.34s (1/4)
 Downloaded lithium - 1.21.10 - fabric in 1.87s (2/4)
 ```
 
-5. Once complete, you’ll see a summary:
+5. Once complete, you’ll see a download summary:
 
 ```
 Download complete: 4/4 mods downloaded in 12.45s
@@ -75,13 +75,15 @@ Download complete: 4/4 mods downloaded in 12.45s
 All successful downloads are logged in:
 
 ```
-/log/download.txt
+log/download.txt
 ```
 
 Format:
 
 ```
-<DATE_TIME> - <VERSION> - <LOADER> - <MOD_SLUG>
+<DATE_TIME> - <VERSION> - <LOADER> - <MOD_NAME>
+//  EXAMPLE:   06/11/2025, 10:02:14 am - mc1.21.10-0.7.2-fabric - fabric - sodium
+
 ```
 
 ---
