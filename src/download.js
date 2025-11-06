@@ -20,11 +20,18 @@ export async function downloadHandler(list) {
             for (let j = 0; j < version.length && !downloaded; j++) {
                 const startTime = Date.now();
                 try {
-                    await downloadMod(mods[i], version[j], loader[k], config.output);
+                    const status = await downloadMod(mods[i], version[j], loader[k], config.output);
                     downloaded = true;
                     successCount++;
+
                     const elapsed = ((Date.now() - startTime) / 1000).toFixed(2);
-                    console.log(`Downloaded ${mods[i]} - ${version[j]} - ${loader[k]} in ${elapsed}s (${successCount}/${totalMods})`);
+
+                    if (status === 'downloaded') {
+                        console.log(`Downloaded ${mods[i]} - ${version[j]} - ${loader[k]} in ${elapsed}s (${successCount}/${totalMods})`);
+                    } else if (status === 'exists') {
+                        console.log(`Already exists: ${mods[i]} - ${version[j]} - ${loader[k]} (${successCount}/${totalMods})`);
+                    }
+
                 } catch (error) {
                     console.log(error);
                 }
@@ -43,16 +50,27 @@ async function downloadMod(mod, version, loader, output) {
         if (!v.loaders.includes(loader)) continue;
 
         const file = v.files[0];
+        const modFileExists = await hasModFile(mod, v.version_number, output);
+        if (modFileExists) {
+            await writeToLogAlreadyExists(v.version_number, loader, mod);
+            return 'exists';
+        }
+
         try {
             await downloadFile(file.url, output, v.version_number, loader, mod);
             await writeToLog(v.version_number, loader, mod);
-
-            return;
+            return 'downloaded';
         } catch (err) {
             continue;
         }
     }
     throw new Error(`No compatible version found for ${mod} ${version} ${loader}`);
+}
+
+async function hasModFile(mod, versionNumber, output) {
+    const filename = `${mod}-${versionNumber}.jar`;
+    const filePath = path.join(output, filename);
+    return fs.existsSync(filePath);
 }
 
 async function fetchModVersions(mod) {
@@ -74,9 +92,17 @@ async function downloadFile(url, output, versionNumber, loader, mod) {
     fs.writeFileSync(path.join(output, filename), buffer);
 }
 
+async function writeToLogAlreadyExists(version, loader, mod) {
+    const now = new Date();
+    const log = `${now.toLocaleString()} - Already exists - ${version} - ${loader} - ${mod}\n`;
+
+    fs.mkdirSync(path.dirname(logFile), { recursive: true });
+    fs.appendFileSync(logFile, log);
+}
+
 async function writeToLog(version, loader, mod) {
     const now = new Date();
-    const log = `${now.toLocaleString()} - ${version} - ${loader} - ${mod}\n`;
+    const log = `${now.toLocaleString()} - Download - ${version} - ${loader} - ${mod}\n`;
     
     fs.mkdirSync(path.dirname(logFile), { recursive: true });
     fs.appendFileSync(logFile, log);
