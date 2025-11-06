@@ -41,7 +41,13 @@ https://modrinth.com/mod/sodium <--- # only take the 'sodium' !!!
 
 ### Running the Downloader
 
-1. Pick which list you are using and the filepath to your `.minecraft/mods` folder.
+1. Pick which list you are using and the filepath to your `.minecraft/mods` folder in `config/default.js` by modifying these variables:
+```js
+// CONFIG //
+
+export const list = lists.sodium;
+export const output = 'C:\\APPS\\MultiMC\\instances\\1.21.10\\.minecraft\\mods';
+```
 2. Open a terminal and navigate to the project folder.
 3. Run the downloader script:
 
