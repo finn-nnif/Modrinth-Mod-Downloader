@@ -4,4 +4,4 @@ import * as lists from './lists.js';
 // CONFIG //
 
 export const list = lists.sodium;
-export const output = 'C:\\Users\\30122115\\Documents\\mods';
+export const output = 'C:\\APPS\\MultiMC\\instances\\1.21.10\\.minecraft\\mods';
